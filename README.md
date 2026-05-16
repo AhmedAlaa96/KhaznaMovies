@@ -19,8 +19,8 @@ The Khazna Movie App is an Android application that allows users to browse a lis
 
 ## Prerequisites
 
-- Android Studio (version Electric Eel (2022.1.1) or higher)
-
+- Android Studio Otter 2 Feature Drop | 2025.2.2 or higher
+  
 ## Technologies Used
 
 - Kotlin
