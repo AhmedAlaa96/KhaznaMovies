@@ -1,4 +1,4 @@
-package com.example.khaznamovies.data.models.dto
+package com.example.khaznamovies.domain.models.dto
 
 
 import android.os.Parcelable

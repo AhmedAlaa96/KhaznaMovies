@@ -1,13 +1,13 @@
 package com.example.khaznamovies.data.di
 
-import com.example.khaznamovies.data.repositories.GetMoviesListRepositoryImpl
+import com.example.khaznamovies.data.repositories.KhaznaMoviesRepositoryImpl
 import com.example.khaznamovies.data.local.LocalDataSource
 import com.example.khaznamovies.data.local.LocalDataSourceImpl
 import com.example.khaznamovies.data.remote.RemoteDataSource
 import com.example.khaznamovies.data.remote.RemoteDataSourceImpl
 import com.example.khaznamovies.data.repositories.GetMovieDetailsRepositoryImpl
 import com.example.khaznamovies.domain.repositories.GetMovieDetailsRepository
-import com.example.khaznamovies.domain.repositories.GetMoviesListRepository
+import com.example.khaznamovies.domain.repositories.KhaznaMoviesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -23,7 +23,7 @@ interface DataModule {
     fun bindLocalDataSource(localDataSourceImpl: LocalDataSourceImpl): LocalDataSource
 
     @Binds
-    fun bindGetMoviesListRepository(getMoviesListRepositoryImpl: GetMoviesListRepositoryImpl): GetMoviesListRepository
+    fun bindGetMoviesListRepository(getMoviesListRepositoryImpl: KhaznaMoviesRepositoryImpl): KhaznaMoviesRepository
 
     @Binds
     fun bindGetMovieDetailsRepository(getMovieDetailsRepositoryImpl: GetMovieDetailsRepositoryImpl): GetMovieDetailsRepository

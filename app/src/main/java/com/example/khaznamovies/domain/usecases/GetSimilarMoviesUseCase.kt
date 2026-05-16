@@ -7,10 +7,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GetTopRatedListUseCase @Inject constructor(private val repository: KhaznaMoviesRepository) {
-    suspend operator fun invoke(): Status<MoviesListResponse> {
+class GetSimilarMoviesUseCase @Inject constructor(private val repository: KhaznaMoviesRepository) {
+    suspend operator fun invoke(movieId: Int?): Status<MoviesListResponse> {
         return withContext(Dispatchers.IO) {
-            repository.getTopRatedList()
+            repository.getSimilarMovies(movieId)
         }
     }
 }

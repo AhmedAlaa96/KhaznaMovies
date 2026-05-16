@@ -1,6 +1,8 @@
 [versions]
 # SDK
 compileSdk = "36"
+kotlinxSerializationJson = "1.6.3"
+materialIconsExtended = "1.7.0"
 minSdk = "24"
 targetSdk = "36"
 
@@ -13,7 +15,7 @@ ksp = "2.3.7"
 coreKtx = "1.18.0"
 lifecycle = "2.10.0"
 activityCompose = "1.13.0"
-navigationCompose = "2.9.0"
+navigationCompose = "2.9.8"
 
 # Compose
 composeBom = "2026.04.01"
@@ -47,7 +49,9 @@ barista = "4.3.0"
 
 [libraries]
 # Core
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 
@@ -104,6 +108,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 

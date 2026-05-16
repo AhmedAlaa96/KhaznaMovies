@@ -23,8 +23,10 @@ object Constants {
         const val BASE_URL: String = BuildConfig.BASE_NETWORK_URL
 
         const val GET_TOP_MOVIES = "movie/top_rated?language=en-US?page=1"
-        const val GET_MOVIES = "discover/movie"
+        const val GET_MOVIES = "discover/movie?primary_release_year=2024"
         const val GET_MOVIE_DETAILS = "movie/{movieId}?language=en-US"
+        const val GET_SIMILAR_MOVIES = "movie/{movie_id}/similar"
+        const val GET_MOVIE_CAST = "movie/{movie_id}/credits"
         const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
 
     }

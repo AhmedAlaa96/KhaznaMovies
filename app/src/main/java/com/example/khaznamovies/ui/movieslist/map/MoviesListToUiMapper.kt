@@ -1,8 +1,8 @@
 package com.example.khaznamovies.ui.movieslist.map
 
-import com.example.khaznamovies.data.models.dto.Movie
-import com.example.khaznamovies.ui.state.MovieSectionUiState
-import com.example.khaznamovies.ui.state.MovieUiModel
+import com.example.khaznamovies.domain.models.dto.Movie
+import com.example.khaznamovies.ui.movieslist.state.MovieSectionUiState
+import com.example.khaznamovies.ui.movieslist.state.MovieListUiModel
 import com.example.khaznamovies.utils.Utils
 import javax.inject.Inject
 
@@ -10,12 +10,12 @@ class MoviesListToUiMapper @Inject constructor() {
 
     fun map(moviesList: List<Movie>?): List<MovieSectionUiState> {
         return moviesList
-        ?.groupBy { it.releaseDate?.take(4) ?: "Unknown" }
-            ?.map { (year, movies) ->
+            ?.groupBy { it.releaseDate?.take(7) ?: "Unknown" }
+            ?.map { (month, movies) ->
                 MovieSectionUiState(
-                    title = year,
+                    title = month,
                     movies = movies.map { movie ->
-                        MovieUiModel(
+                        MovieListUiModel(
                             id = movie.id,
                             title = movie.title,
                             releaseDate = movie.releaseDate,
@@ -24,6 +24,6 @@ class MoviesListToUiMapper @Inject constructor() {
                         )
                     }
                 )
-            }.orEmpty()
+            }.orEmpty().sortedByDescending { it.title }
     }
 }

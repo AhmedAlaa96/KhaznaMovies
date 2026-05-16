@@ -39,8 +39,8 @@ object Utils {
         else "%.1f".format((numInDouble))
     }
 
-    fun getImageUrl(posterPath: String?): String? {
-        return posterPath?.let {
+    fun getImageUrl(path: String?): String? {
+        return path?.let {
             "$IMAGE_BASE_URL$it"
         } ?: run { null }
     }

@@ -1,16 +1,16 @@
 package com.example.khaznamovies.domain.usecases
 
-import com.example.khaznamovies.domain.models.dto.MovieDetailsResponse
 import com.example.khaznamovies.domain.models.Status
+import com.example.khaznamovies.domain.models.dto.Watchlist
 import com.example.khaznamovies.domain.repositories.GetMovieDetailsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GetMovieDetailsUseCase @Inject constructor(private val repository: GetMovieDetailsRepository) {
-    suspend operator fun invoke(movieId: Int?): Status<MovieDetailsResponse> {
+class RemoveFromWatchlistUseCase @Inject constructor(private val repository: GetMovieDetailsRepository) {
+    suspend operator fun invoke(movie: Watchlist): Status<Unit> {
         return withContext(Dispatchers.IO) {
-            repository.getMovieDetails(movieId)
+            Status.Success(repository.removeFromWatchlist(movie))
         }
     }
 }

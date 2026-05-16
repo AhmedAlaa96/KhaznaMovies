@@ -1,15 +1,15 @@
-package com.example.khaznamovies.ui.movieslist.map
+package com.example.khaznamovies.ui.moviedetails.map
 
 import com.example.khaznamovies.domain.models.dto.Movie
-import com.example.khaznamovies.ui.movieslist.state.MovieListUiModel
+import com.example.khaznamovies.ui.moviedetails.state.MovieDetailsUiModel
 import com.example.khaznamovies.utils.Utils
 import javax.inject.Inject
 
-class TopRatedListToUiMapper @Inject constructor() {
+class SimilarMoviesListToUiMapper @Inject constructor() {
 
-    fun map(moviesList: List<Movie>?): List<MovieListUiModel> {
+    fun map(moviesList: List<Movie>?): List<MovieDetailsUiModel> {
         return moviesList?.map { movie ->
-            MovieListUiModel(
+            MovieDetailsUiModel(
                 id = movie.id,
                 title = movie.title,
                 releaseDate = movie.releaseDate,

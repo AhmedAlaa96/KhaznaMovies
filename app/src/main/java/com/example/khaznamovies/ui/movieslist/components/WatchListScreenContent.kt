@@ -10,11 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -24,66 +22,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.khaznamovies.ui.base.NetworkImage
-import com.example.khaznamovies.ui.movieslist.state.MovieSectionUiState
 import com.example.khaznamovies.ui.movieslist.state.MovieListUiModel
 
 @Composable
-fun MoviesListScreenContent(
-    topRatedMovies: List<MovieListUiModel>,
-    movies: List<MovieSectionUiState>,
+fun WatchListScreenContent(
+    movies: List<MovieListUiModel>,
     modifier: Modifier = Modifier,
-    error: String? = null,
     onMovieClicked: (Int?) -> Unit = {}
 ) {
-    error?.let {
-        Box(Modifier.fillMaxSize()) {
+    Box(modifier.fillMaxSize()) {
+        if (movies.isEmpty()) {
             ErrorScreen(
-                error = it,
+                error = "Your watchlist is empty",
                 modifier = Modifier.align(Alignment.Center)
             )
-        }
-    } ?: run {
-        Column(modifier.verticalScroll(rememberScrollState())) {
-            Spacer(Modifier.height(16.dp))
-            Text(
-                text = "Trending",
-                modifier = Modifier.padding(horizontal = 16.dp),
-                color = Color.Black,
-                fontWeight = FontWeight.W700,
-                style = MaterialTheme.typography.titleLarge
-            )
-            LazyRow {
-                items(topRatedMovies) { movie ->
-                    MovieItem(movie = movie) { onMovieClicked(it.id) }
-                }
-            }
-            Spacer(Modifier.height(16.dp))
-            Column {
-                movies.forEach { section ->
-                    Text(
-                        text = section.title,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                        color = Color.Black,
-                        fontWeight = FontWeight.W700,
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-                    Column {
-                        section.movies.forEach { movie ->
-                            MovieItem(movie = movie) { onMovieClicked(movie.id) }
-                        }
-                    }
+        } else {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(movies) { movie ->
+                    WatchlistItem(movie, onItemClicked = { onMovieClicked(it.id) })
                 }
             }
         }
     }
 }
 
+
 @Composable
-private fun MovieItem(movie: MovieListUiModel, onItemClicked: (MovieListUiModel) -> Unit) {
+private fun WatchlistItem(movie: MovieListUiModel, onItemClicked: (MovieListUiModel) -> Unit) {
     Card(
         modifier = Modifier
             .wrapContentHeight()

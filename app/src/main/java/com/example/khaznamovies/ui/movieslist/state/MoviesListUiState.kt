@@ -1,4 +1,4 @@
-package com.example.khaznamovies.ui.state
+package com.example.khaznamovies.ui.movieslist.state
 
 import com.example.khaznamovies.domain.models.PageModel
 
@@ -6,17 +6,18 @@ data class MoviesListUiState(
     val pageModel: PageModel = PageModel(),
     val isLoading: Boolean = false,
     val error: String? = null,
-    val topRatedList: List<MovieUiModel> = emptyList(),
-    val moviesList: List<MovieSectionUiState> = emptyList()
+    val topRatedList: List<MovieListUiModel> = emptyList(),
+    val moviesList: List<MovieSectionUiState> = emptyList(),
+    val watchlist: List<MovieListUiModel> = emptyList()
 )
 
 
 data class MovieSectionUiState(
     val title: String,
-    val movies: List<MovieUiModel>
+    val movies: List<MovieListUiModel>
 )
 
-data class MovieUiModel(
+data class MovieListUiModel(
     val id: Int? = null,
     val title: String? = null,
     val releaseDate: String? = null,

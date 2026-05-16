@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.khaznamovies.ui.movieslist.MoviesListScreen
+import com.example.khaznamovies.ui.navigation.MoviesNavHost
 import com.example.khaznamovies.ui.theme.KhaznaMoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             KhaznaMoviesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MoviesListScreen(modifier = Modifier.padding(innerPadding))
+                    MoviesNavHost(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

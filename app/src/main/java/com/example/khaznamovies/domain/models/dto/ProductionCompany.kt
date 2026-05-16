@@ -1,4 +1,4 @@
-package com.example.khaznamovies.data.models.dto
+package com.example.khaznamovies.domain.models.dto
 
 
 import android.os.Parcelable
@@ -8,13 +8,13 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-data class BelongsToCollection(
-    @SerializedName("backdrop_path")
-    val backdropPath: String? = null,
+data class ProductionCompany(
     @SerializedName("id")
     val id: Int? = null,
+    @SerializedName("logo_path")
+    val logoPath: String? = null,
     @SerializedName("name")
     val name: String? = null,
-    @SerializedName("poster_path")
-    val posterPath: String? = null
+    @SerializedName("origin_country")
+    val originCountry: String? = null
 ): Parcelable
